@@ -25,6 +25,7 @@ db.once("open", async () => {
       category: categories[0]._id,
       price: 2.99,
       quantity: 500,
+      rating: 5,
     },
     {
       name: "Canned Coffee",
@@ -34,6 +35,7 @@ db.once("open", async () => {
       category: categories[0]._id,
       price: 1.99,
       quantity: 500,
+      rating: 4,
     },
     {
       name: "Toilet Paper",
@@ -43,6 +45,7 @@ db.once("open", async () => {
       image: "toilet-paper.jpg",
       price: 7.99,
       quantity: 20,
+      rating: 1,
     },
     {
       name: "Handmade Soap",
@@ -52,6 +55,7 @@ db.once("open", async () => {
       image: "soap.jpg",
       price: 3.99,
       quantity: 50,
+      rating: 2,
     },
     {
       name: "Set of Wooden Spoons",
@@ -61,6 +65,7 @@ db.once("open", async () => {
       image: "wooden-spoons.jpg",
       price: 14.99,
       quantity: 100,
+      rating: 0,
     },
     {
       name: "Camera",
@@ -70,6 +75,7 @@ db.once("open", async () => {
       image: "camera.jpg",
       price: 399.99,
       quantity: 30,
+      rating: 3,
     },
     {
       name: "Tablet",
@@ -79,6 +85,7 @@ db.once("open", async () => {
       image: "tablet.jpg",
       price: 199.99,
       quantity: 30,
+      rating: 5,
     },
     {
       name: "Tales at Bedtime",
@@ -88,6 +95,7 @@ db.once("open", async () => {
       image: "bedtime-book.jpg",
       price: 9.99,
       quantity: 100,
+      rating: 5,
     },
     {
       name: "Spinning Top",
@@ -97,6 +105,7 @@ db.once("open", async () => {
       image: "spinning-top.jpg",
       price: 1.99,
       quantity: 1000,
+      rating: 5,
     },
     {
       name: "Set of Plastic Horses",
@@ -106,6 +115,7 @@ db.once("open", async () => {
       image: "plastic-horses.jpg",
       price: 2.99,
       quantity: 1000,
+      rating: 5,
     },
     {
       name: "Teddy Bear",
@@ -115,6 +125,7 @@ db.once("open", async () => {
       image: "teddy-bear.jpg",
       price: 7.99,
       quantity: 100,
+      rating: 5,
     },
     {
       name: "Alphabet Blocks",
@@ -124,6 +135,7 @@ db.once("open", async () => {
       image: "alphabet-blocks.jpg",
       price: 9.99,
       quantity: 600,
+      rating: 5,
     },
   ]);
 
