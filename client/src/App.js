@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import {
   ApolloClient,
@@ -18,6 +18,7 @@ import Success from "./pages/Success";
 import { Provider } from "react-redux";
 import OrderHistory from "./pages/OrderHistory";
 import store from "./utils/store";
+import AgeVerification from "./pages/AgeVerification";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -39,21 +40,35 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const [isAgeVerified, setIsAgeVerified] = useState(false);
+
+  const handleAgeVerificationComplete = () => {
+    setIsAgeVerified(true);
+  };
+
   return (
     <ApolloProvider client={client}>
       <Router>
         <div>
           <Provider store={store}>
-            <Nav />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/success" element={<Success />} />
-              <Route path="/orderHistory" element={<OrderHistory />} />
-              <Route path="/products/:id" element={<Detail />} />
-              <Route path="*" element={<NoMatch />} />
-            </Routes>
+            {isAgeVerified ? ( // Render the age verification page conditionally
+              <>
+                <Nav />
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/signup" element={<Signup />} />
+                  <Route path="/success" element={<Success />} />
+                  <Route path="/orderHistory" element={<OrderHistory />} />
+                  <Route path="/products/:id" element={<Detail />} />
+                  <Route path="*" element={<NoMatch />} />
+                </Routes>
+              </>
+            ) : (
+              <AgeVerification
+                onVerificationComplete={handleAgeVerificationComplete}
+              />
+            )}
           </Provider>
         </div>
       </Router>

@@ -92,6 +92,27 @@ a:hover {
   text-decoration: underline;
 }
 
+.verification-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  opacity: 0.9;
+  background-image: url("./assets/VerificationBackground.jpeg");
+  background-size: cover;
+  background-position: center;
+}
+
+.verification-box {
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  opacity: 0.8;
+}
+
 header {
   background: var(--primary);
 }
