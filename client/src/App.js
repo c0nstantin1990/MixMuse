@@ -14,6 +14,7 @@ import NoMatch from "./pages/NoMatch";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Nav from "./components/Nav";
+import Footer from "./components/Footer";
 import Success from "./pages/Success";
 import { Provider } from "react-redux";
 import OrderHistory from "./pages/OrderHistory";
@@ -63,6 +64,7 @@ function App() {
                   <Route path="/products/:id" element={<Detail />} />
                   <Route path="*" element={<NoMatch />} />
                 </Routes>
+                <Footer />
               </>
             ) : (
               <AgeVerification
