@@ -225,6 +225,8 @@ input:focus {
 }
 
 footer {
+  position: fixed;
+  bottom: 0;
   background: #243033;
   font-weight: bold;
   width: 100%;
