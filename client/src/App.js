@@ -1,5 +1,10 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import {
   ApolloClient,
   InMemoryCache,
@@ -40,8 +45,14 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+function isUserLoggedIn() {
+  const token = localStorage.getItem("id_token");
+  return !!token;
+}
+
 function App() {
   const [isAgeVerified, setIsAgeVerified] = useState(false);
+  const isLoggedIn = isUserLoggedIn();
 
   const handleAgeVerificationComplete = () => {
     setIsAgeVerified(true);
@@ -52,7 +63,21 @@ function App() {
       <Router>
         <div>
           <Provider store={store}>
-            {isAgeVerified ? ( // Render the age verification page conditionally
+            {isLoggedIn ? ( // If the user is logged in, go to the main page
+              <>
+                <Nav />
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/signup" element={<Signup />} />
+                  <Route path="/success" element={<Success />} />
+                  <Route path="/orderHistory" element={<OrderHistory />} />
+                  <Route path="/products/:id" element={<Detail />} />
+                  <Route path="*" element={<NoMatch />} />
+                </Routes>
+                <Footer />
+              </>
+            ) : isAgeVerified ? ( // If the user is not logged in but age is verified, go to the main page
               <>
                 <Nav />
                 <Routes>
