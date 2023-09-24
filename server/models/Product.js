@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-
 const { Schema } = mongoose;
+const Rating = require("./Rating");
 
 const productSchema = new Schema({
   name: {
@@ -24,17 +24,12 @@ const productSchema = new Schema({
     min: 0,
     default: 0,
   },
-  rating: {
-    type: Number,
-    min: 0,
-    max: 5,
-    default: 0,
-  },
   category: {
     type: Schema.Types.ObjectId,
     ref: "Category",
     required: true,
   },
+  ratings: [Rating.schema],
 });
 
 const Product = mongoose.model("Product", productSchema);

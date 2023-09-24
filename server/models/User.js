@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
-
 const { Schema } = mongoose;
 const bcrypt = require("bcrypt");
 const Order = require("./Order");
+const Rating = require("./Rating");
 
 const userSchema = new Schema({
   firstName: {
@@ -26,6 +26,7 @@ const userSchema = new Schema({
     minlength: 5,
   },
   orders: [Order.schema],
+  ratings: [Rating.schema],
 });
 
 userSchema.pre("save", async function (next) {
