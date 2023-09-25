@@ -174,7 +174,7 @@ db.once("open", async () => {
     {
       name: "Hiware Bar Spoon Set of 3",
       description:"Can’t decide between European, American, or Japanese-style bar spoons? This set includes one of all of the above. All three bar spoons are made of premium-grade 18/10 stainless steel, making them durable, rust-proof, and easy to clean at the end of the night. The bar spoons come at 12-, 12-, and 11-inches long, ideal for working in a mixing glass, a shaker, or directly in the cocktail glass. The brand recommends picking your bar spoon from this set for the type of glass you’re using or the type of cocktail you’re building. Outside of cocktails, these extra-long spoons also double as excellent stirrers for larger coffees or cold brews. All the bar spoons are dishwasher safe, making it easy to clean up after a few rounds. ",
-      image: "https://www.liquor.com/thmb/vdeQ8Nbrdp_FZMDgSxF61jclZ70=/fit-in/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/ScreenShot2021-08-19at1.23.20PM-9ba33ff325d542a29ccf853d04230f1f.jpg://www.liquor.com/thmb/pjN_gqGYkN8mOTNMUI_VcmpgMYY=/fit-in/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/breville-smoking-gun-food-smoker-3668293a2b69422ebe36a9677666c437.jpg",
+      image: "https://www.liquor.com/thmb/vdeQ8Nbrdp_FZMDgSxF61jclZ70=/fit-in/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/ScreenShot2021-08-19at1.23.20PM-9ba33ff325d542a29ccf853d04230f1f.jpg",
       category: categories[1]._id,
       price: 100,
       quantity: 5,
