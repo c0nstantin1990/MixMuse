@@ -25,6 +25,7 @@ import { Provider } from "react-redux";
 import OrderHistory from "./pages/OrderHistory";
 import store from "./utils/store";
 import AgeVerification from "./pages/AgeVerification";
+import FeaturedProducts from "./pages/Features";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -67,6 +68,7 @@ function App() {
               <>
                 <Nav />
                 <Routes>
+                  <Route path="/" element={<FeaturedProducts />} />
                   <Route path="/" element={<Home />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/signup" element={<Signup />} />
@@ -81,6 +83,7 @@ function App() {
               <>
                 <Nav />
                 <Routes>
+                  <Route path="/" element={<FeaturedProducts />} />
                   <Route path="/" element={<Home />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/signup" element={<Signup />} />
