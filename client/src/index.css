@@ -140,6 +140,11 @@ button[disabled] {
   cursor: default;
   opacity: 0.8;
 }
+.categories button {
+  color: rgb(246, 243, 243);
+  background-color: var(--dark);
+  font-weight: bold;
+}
 
 img {
   max-width: 100%;
@@ -179,12 +184,14 @@ input:focus {
   flex-wrap: wrap;
 }
 
-.space-between {
-  justify-content: space-between;
+.flex-row2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
 }
 
-.flex-end {
-  justify-content: flex-end;
+.space-between {
+  justify-content: space-between;
 }
 
 .mx-1 {
@@ -201,6 +208,10 @@ input:focus {
   margin-top: var(--spacing-one);
   margin-bottom: var(--spacing-one);
 }
+.my-1 img {
+  width: 400px;
+  height: auto;
+}
 
 .my-2 {
   margin-top: var(--spacing-two);
@@ -210,6 +221,11 @@ input:focus {
 .px-1 {
   padding-right: var(--spacing-one);
   padding-left: var(--spacing-one);
+}
+
+.px-1 img {
+  width: 200px;
+  height: auto;
 }
 
 .px-2 {

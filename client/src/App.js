@@ -66,6 +66,7 @@ function App() {
             {isLoggedIn ? ( // If the user is logged in, go to the main page
               <>
                 <Nav />
+                
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/login" element={<Login />} />
