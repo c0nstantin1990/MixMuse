@@ -1,6 +1,7 @@
 import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
+import CategoryMenu from "../CategoryMenu";
 
 function Nav() {
   function showNavigation() {
@@ -19,7 +20,9 @@ function Nav() {
       );
     } else {
       return (
-        <ul className="flex-row">
+        <ul className="flex-row2">
+          <CategoryMenu />
+
           <li className="mx-1">
             <Link to="/signup">Signup</Link>
           </li>
