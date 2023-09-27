@@ -49,3 +49,13 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_RATING = gql`
+mutation addRating($productId: ID!, $stars: Int!, $comments: String) {
+  addRating(productId: $productId, stars: $stars, comments: $comments) {
+      _id
+      stars
+      comments
+    }
+  }
+`;

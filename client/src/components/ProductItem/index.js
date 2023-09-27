@@ -4,6 +4,7 @@ import { pluralize } from "../../utils/helpers";
 import { useDispatch, useSelector } from "react-redux";
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
+import  StarRating  from "../StarRating";
 
 function ProductItem(item) {
   const state = useSelector((state) => {
@@ -14,7 +15,12 @@ function ProductItem(item) {
 
   const { cart } = state;
   
-  const { image, name, _id, price, quantity } = item;
+  const { image, name, _id, price, quantity, ratings } = item;
+
+  let average = 0;
+  if (ratings.length !== 0) {
+    average = ratings.reduce((acc, current) => acc + Number.parseInt(current.stars), 0) / ratings.length;
+  }
 
   const addToCart = () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === _id);
@@ -50,6 +56,12 @@ function ProductItem(item) {
         <span>${price}</span>
       </div>
       <button onClick={addToCart}>Add to cart</button>
+      <div>
+      { (average === 0)
+          ? <div> Not rated yet </div> 
+          : <div> <StarRating value={average} />{ratings.length} rating(s)</div> 
+      }
+      </div>
     </div>
   );
 }

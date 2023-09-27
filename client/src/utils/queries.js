@@ -12,6 +12,11 @@ export const QUERY_PRODUCTS = gql`
       category {
         _id
       }
+      ratings {
+        _id
+        stars
+        comments
+      }
     }
   }
 `;
@@ -34,6 +39,11 @@ export const QUERY_ALL_PRODUCTS = gql`
       quantity
       category {
         name
+      }
+      ratings {
+        _id
+        stars
+        comments
       }
     }
   }
@@ -64,6 +74,11 @@ export const QUERY_USER = gql`
           quantity
           image
         }
+      }
+      ratings {
+        _id
+        stars
+        comments
       }
     }
   }
