@@ -8,12 +8,14 @@ import {
     UPDATE_CURRENT_CATEGORY,
     CLEAR_CART,
     TOGGLE_CART,
+    TOGGLE_RATING,
 } from "./actions";
 
 const defaultState = {
     products: [],
     cart: [],
     cartOpen: false,
+    ratingOpen: false,
     categories: [],
     currentCategory: "",
 };
@@ -21,8 +23,6 @@ const defaultState = {
 // Reducers must return new state, not mutate the original state.
 const reducer = (state = defaultState, action) => {
     switch (action.type) {
-        // TODO: Add a comment describing the functionality of the UPDATE_PRODUCTS case
-        // Updates the products in the state with new data from action
         case UPDATE_PRODUCTS:
             return {
                 ...state,
@@ -41,8 +41,6 @@ const reducer = (state = defaultState, action) => {
                 ...state,
                 cart: [...state.cart, ...action.products],
             };
-        // TODO: Add a comment describing the functionality of the UPDATE_CART_QUANTITY case
-        // Your comment here
         case UPDATE_CART_QUANTITY:
             return {
                 ...state,
@@ -55,8 +53,6 @@ const reducer = (state = defaultState, action) => {
                 }),
             };
 
-        // TODO: Add a comment describing the functionality of the REMOVE_FROM_CART case
-        //  Removes a product from the shopping cart in the state
         case REMOVE_FROM_CART:
             let newState = state.cart.filter((product) => {
                 return product._id !== action._id;
@@ -81,6 +77,12 @@ const reducer = (state = defaultState, action) => {
                 cartOpen: !state.cartOpen,
             };
 
+        case TOGGLE_RATING:
+            return {
+                ...state,
+                ratingOpen: !state.ratingOpen,
+            };
+    
         case UPDATE_CATEGORIES:
             return {
                 ...state,
@@ -93,8 +95,6 @@ const reducer = (state = defaultState, action) => {
                 currentCategory: action.currentCategory,
             };
 
-        // TODO: Add a comment describing what the default case is for
-        // Returns the current state when no matching action
         default:
             return state;
     }

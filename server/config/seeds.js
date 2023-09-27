@@ -1,5 +1,5 @@
 const db = require("./connection");
-const { User, Product, Category } = require("../models");
+const { User, Product, Category, Rating } = require("../models");
 
 db.once("open", async () => {
   await Category.deleteMany();
@@ -11,6 +11,24 @@ db.once("open", async () => {
   ]);
 
   console.log("categories seeded");
+
+  await Rating.deleteMany();
+
+  const ratings = await Rating.insertMany([
+    { stars: 1, comments: "Did not love this product"  },
+    { stars: 2, comments: "Did not love this product"  },
+    { stars: 3, comments: "This product was OK"  },
+    { stars: 4, comments: "Love this product!"  },
+    { stars: 5, comments: "Love this product!"  },
+    { stars: 1, comments: "Did not love this product"  },
+    { stars: 2, comments: "Did not love this product"  },
+    { stars: 3, comments: "This product was OK"  },
+    { stars: 4, comments: "Love this product!"  },
+    { stars: 5, comments: "Love this product!"  },
+  ]);
+
+  console.log("ratings seeded");
+
 
   await Product.deleteMany();
 
@@ -24,6 +42,7 @@ db.once("open", async () => {
       category: categories[0]._id,
       price: 22.99,
       quantity: 500,
+      ratings: [ratings[0], ratings[1]]
     },
     {
       name: "Espolon Tequila",
@@ -33,6 +52,7 @@ db.once("open", async () => {
       category: categories[0]._id,
       price: 20,
       quantity: 500,
+      ratings: [ratings[2], ratings[3]]
     },
     {
       name: "Michter’s US*1 Small Batch Kentucky Straight Bourbon",
@@ -42,6 +62,7 @@ db.once("open", async () => {
       category: categories[0]._id,
       price: 40,
       quantity: 20,
+      ratings: [ratings[4]]
     },
     {
       name: "DUsse VSOP",
@@ -51,6 +72,7 @@ db.once("open", async () => {
       category: categories[0]._id,
       price: 50,
       quantity: 50,
+      ratings: [ratings[5]]
     },
     {
       name: "Monkey 47 Schwarzwald Dry Gin ",
@@ -60,6 +82,7 @@ db.once("open", async () => {
       category: categories[0]._id,
       price: 50,
       quantity: 50,
+      ratings: [ratings[6]]
     },
     {
       name: "Havana Club Añejo Clásico Puerto Rican Rum ",
@@ -69,6 +92,7 @@ db.once("open", async () => {
       category: categories[0]._id,
       price: 22,
       quantity: 300,
+      ratings: [ratings[7]]
     },
     {
       name: "Rittenhouse Straight Rye Whisky",
@@ -114,6 +138,7 @@ db.once("open", async () => {
       category: categories[1]._id,
       price: 130,
       quantity: 10,
+      ratings: [ratings[8], ratings[9]]
     },
     {
       name: "Zulay Professional Heavy Duty Citrus Juicer",
@@ -244,6 +269,7 @@ db.once("open", async () => {
         products: [products[0]._id, products[0]._id, products[1]._id],
       },
     ],
+    ratings: [ratings[0], ratings[2], ratings[4], ratings[6], ratings[8]]
   });
 
   await User.create({
@@ -251,6 +277,7 @@ db.once("open", async () => {
     lastName: "Holt",
     email: "eholt@testmail.com",
     password: "password12345",
+    ratings: [ratings[1], ratings[3], ratings[5], ratings[7], ratings[9]]
   });
 
   console.log("users seeded");
