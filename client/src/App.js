@@ -1,10 +1,5 @@
-import React, { useState, useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import {
   ApolloClient,
   InMemoryCache,
@@ -67,7 +62,6 @@ function App() {
             {isLoggedIn ? ( // If the user is logged in, go to the main page
               <>
                 <Nav />
-                
                 <Routes>
                   {/* <Route path="/" element={<FeaturedProducts />} /> */}
                   <Route path="/" element={<Home />} />
@@ -75,6 +69,7 @@ function App() {
                   <Route path="/signup" element={<Signup />} />
                   <Route path="/success" element={<Success />} />
                   <Route path="/orderHistory" element={<OrderHistory />} />
+                  <Route path="/categoryMenu" element={<Home />} />
                   <Route path="/products/:id" element={<Detail />} />
                   <Route path="*" element={<NoMatch />} />
                 </Routes>
@@ -90,6 +85,7 @@ function App() {
                   <Route path="/signup" element={<Signup />} />
                   <Route path="/success" element={<Success />} />
                   <Route path="/orderHistory" element={<OrderHistory />} />
+                  <Route path="/categoryMenu" element={<Home />} />
                   <Route path="/products/:id" element={<Detail />} />
                   <Route path="*" element={<NoMatch />} />
                 </Routes>
