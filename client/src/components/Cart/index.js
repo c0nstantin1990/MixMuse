@@ -50,6 +50,15 @@ const Cart = () => {
     return sum.toFixed(2);
   }
 
+  // Calculate the total count of products in the cart
+  function calculateTotalCount() {
+    let totalCount = 0;
+    state.cart.forEach((item) => {
+      totalCount += item.purchaseQuantity;
+    });
+    return totalCount;
+  }
+
   function submitCheckout() {
     const productIds = [];
 
@@ -70,6 +79,8 @@ const Cart = () => {
         <span role="img" aria-label="trash">
           🛒
         </span>
+
+        <span className="cart-count">{calculateTotalCount()}</span>
       </div>
     );
   }
