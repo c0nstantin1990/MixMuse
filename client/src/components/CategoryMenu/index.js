@@ -7,6 +7,7 @@ import {
 } from "../../utils/actions";
 import { QUERY_CATEGORIES } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
+import { Link } from "react-router-dom";
 
 function CategoryMenu() {
   const state = useSelector((state) => {
@@ -45,18 +46,20 @@ function CategoryMenu() {
   };
 
   return (
-    <div className="categories">
-      {categories.map((item) => (
-        <button
-          key={item._id}
-          onClick={() => {
-            handleClick(item._id);
-          }}
-        >
-          {item.name}
-        </button>
-      ))}
-    </div>
+    <Link to="/categoryMenu">
+        <div className="categories">
+            {categories.map((item) => (
+              <button
+                key={item._id}
+                onClick={() => {
+                handleClick(item._id);
+                }}
+              >
+              {item.name}
+              </button>
+            ))}
+        </div>
+    </Link>
   );
 }
 
