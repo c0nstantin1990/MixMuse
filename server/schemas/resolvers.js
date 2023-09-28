@@ -113,7 +113,10 @@ const resolvers = {
     },
 
     addRating: async (parent, { productId, stars, comments }, context) => {
+              console.log("addRating!!!!!!!");
+
       if (context.user) {
+
         const rating = await Rating.create({ stars, comments });
 
         await Product.findByIdAndUpdate(productId, {
