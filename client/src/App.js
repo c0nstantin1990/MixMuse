@@ -59,11 +59,9 @@ function App() {
       <Router>
         <div>
           <Provider store={store}>
-            {isLoggedIn ? ( // If the user is logged in, go to the main page
+            {isLoggedIn ? (
               <>
                 <Nav />
-                {/* This allows you to add the featured products to the home page as a banner instead of its own page */}
-                {/* <FeaturedProducts /> */}
                 <Routes>
                   <Route path="/" element={<FeaturedProducts />} />
                   <Route path="/" element={<Home />} />
@@ -77,11 +75,10 @@ function App() {
                 </Routes>
                 <Footer />
               </>
-            ) : isAgeVerified ? ( // If the user is not logged in but age is verified, go to the main page
+            ) : isAgeVerified ||
+              window.location.pathname === "/categoryMenu" ? (
               <>
                 <Nav />
-                {/* This allows you to add the featured products to the home page as a banner instead of its own page */}
-                {/* <FeaturedProducts /> */}
                 <Routes>
                   <Route path="/" element={<FeaturedProducts />} />
                   <Route path="/" element={<Home />} />
