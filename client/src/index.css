@@ -3,7 +3,7 @@
 
 :root {
   --primary: #000000;
-  --secondary: #8b8d8f;
+  --secondary: #d3bd14;
   --tertiary: #000000;
   --light: #e4d1d1;
   --dark: #272f32;
@@ -145,7 +145,7 @@ button[disabled] {
 }
 .categories button {
   color: rgb(246, 243, 243);
-  background-color: var(--dark);
+  background-color: var(--primary);
   font-weight: bold;
 }
 
@@ -312,6 +312,10 @@ footer h2 {
   color: #f5f9f7;
   font-size: 15px;
   margin: 0;
+}
+
+.justify-content-center {
+  justify-content:center;
 }
 
 @media screen and (max-width: 768px) {

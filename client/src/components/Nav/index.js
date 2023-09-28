@@ -2,6 +2,8 @@ import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 import CategoryMenu from "../CategoryMenu";
+import "../../index.css"
+import logo from "../../assets/images/logoblack.png"
 
 function Nav() {
   function showNavigation() {
@@ -36,17 +38,22 @@ function Nav() {
   }
 
   return (
-    <header style={{ background: "var(--primary)" }} className="flex-row px-1">
+    <header style={{ background: "var(--primary)" }} className="flex-row px-1 justify-content-center">
+      <div style={{textAlign: 'center'}}> 
       <h1>
         <Link to="/" style={{ color: "var(--light)" }}>
           <span role="img" aria-label="shopping bag">
-            🍹
           </span>
-          MixMuse
+          MixMuse 
         </Link>
+        <img
+        src={logo}
+        alt="Logo"
+        style={{ width: "75px" }}/>
       </h1>
 
       <nav>{showNavigation()}</nav>
+      </div>  
     </header>
   );
 }
