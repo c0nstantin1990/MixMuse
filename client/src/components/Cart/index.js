@@ -80,7 +80,7 @@ const Cart = () => {
           🛒
         </span>
 
-        <span className="cart-count">{calculateTotalCount()}</span>
+        <span className="cart-count" style= {{ fontSize: '25px'}}>{calculateTotalCount()}</span>
       </div>
     );
   }
