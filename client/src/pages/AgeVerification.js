@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import logo from "../assets/images/logoblack.png";
 
 const AgeVerification = ({ onVerificationComplete }) => {
   const [year, setYear] = useState("");
@@ -39,6 +40,7 @@ const AgeVerification = ({ onVerificationComplete }) => {
     <div className="verification-container">
       <div className="background-image"></div>
       <div className="verification-box">
+        <img src={logo} alt="Logo" style={{ width: "90px" }} />
         <h2>Age Verification</h2>
         <p>Please enter your date of birth to access this site:</p>
         <input

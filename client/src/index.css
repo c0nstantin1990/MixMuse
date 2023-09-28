@@ -1,5 +1,4 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap");
 
 :root {
   --primary: #000000;
@@ -202,7 +201,7 @@ input:focus {
 }
 .detail-form-container {
   /* background-color: yellow; */
-  background-image: url('./assets/VerificationBackground.jpeg');
+  background-image: url("./assets/VerificationBackground.jpeg");
   background-position: top center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -215,7 +214,7 @@ input:focus {
 }
 .detail-form-container form {
   background-color: white;
-  width:75%;
+  width: 75%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -245,6 +244,7 @@ input:focus {
 .mx-1 {
   margin-right: var(--spacing-one);
   margin-left: var(--spacing-one);
+  list-style: none;
 }
 
 .mx-2 {
@@ -253,9 +253,14 @@ input:focus {
 }
 
 .my-1 {
-  margin-top: var(--spacing-one);
-  margin-bottom: var(--spacing-one);
+  margin-top: 0;
+  margin-bottom: 0;
+  background-image: url("./assets/LoginBackground.jpeg");
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
 }
+
 .my-1 img {
   width: 400px;
   height: auto;
@@ -295,8 +300,8 @@ input:focus {
   width: 25%;
   text-align: center;
   background-color: #f9f9f9 (0, 0, 0, 0.5); /* Adjust the alpha value (0.5 for 50% transparency) */
-  border-radius: 10px; 
-  padding: 20px; 
+  border-radius: 10px;
+  padding: 20px;
   border: 1 px solid rgba(255, 255, 255, 0.3);
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -331,16 +336,6 @@ input:focus {
   transition: 0.5s ease;
 }
 
-/* footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background-color: #0d0d0d;
-  color: #f0eded;
-  text-align: center;
-  padding: 10px 0;
-} */
-
 footer {
   background: #2a2e2f;
   font-weight: bold;
@@ -359,9 +354,9 @@ footer h2 {
   margin: 0;
 }
 .justify-content-center {
-  justify-content:center;
+  justify-content: center;
 
-/* This is the CSS code for the carousel */
+  /* This is the CSS code for the carousel */
 }
 .carousel-item {
   height: 35rem;
@@ -376,13 +371,12 @@ footer h2 {
 }
 .overlay-image {
   pointer-events: none;
-  position:  absolute;
+  position: absolute;
   bottom: 0;
   left: 0px;
   right: 0px;
   top: 0;
-  opacity: .30
-  ;
+  opacity: 0.3;
   background-size: cover;
   background-position: center;
 }
@@ -396,5 +390,3 @@ footer h2 {
     width: 100%;
   }
 }
-
-
