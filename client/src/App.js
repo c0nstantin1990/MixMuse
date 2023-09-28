@@ -20,7 +20,7 @@ import { Provider } from "react-redux";
 import OrderHistory from "./pages/OrderHistory";
 import store from "./utils/store";
 import AgeVerification from "./pages/AgeVerification";
-// import FeaturedProducts from "./pages/Features";
+import FeaturedProducts from "./pages/Features";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -62,8 +62,10 @@ function App() {
             {isLoggedIn ? ( // If the user is logged in, go to the main page
               <>
                 <Nav />
+                {/* This allows you to add the featured products to the home page as a banner instead of its own page */}
+                {/* <FeaturedProducts /> */}
                 <Routes>
-                  {/* <Route path="/" element={<FeaturedProducts />} /> */}
+                  <Route path="/" element={<FeaturedProducts />} />
                   <Route path="/" element={<Home />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/signup" element={<Signup />} />
@@ -78,8 +80,10 @@ function App() {
             ) : isAgeVerified ? ( // If the user is not logged in but age is verified, go to the main page
               <>
                 <Nav />
+                {/* This allows you to add the featured products to the home page as a banner instead of its own page */}
+                {/* <FeaturedProducts /> */}
                 <Routes>
-                  {/* <Route path="/" element={<FeaturedProducts />} /> */}
+                  <Route path="/" element={<FeaturedProducts />} />
                   <Route path="/" element={<Home />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/signup" element={<Signup />} />
