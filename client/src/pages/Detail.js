@@ -147,26 +147,24 @@ function Detail() {
           <div className="detail-form-container">
       <form onSubmit={handleFormSubmit}>
         <h3>Rate this product</h3>
-        <div className="flex-row space-between my-2">
+        <div className="flex-row left-justify my-2">
           <label htmlFor="stars"><strong>Number of Stars:</strong></label>
-          <input
-            placeholder="0 to 5 stars"
-            name="stars"
-            type="stars"
-            id="stars"
-            onChange={handleChange}
-          />
+          <select name="stars" id="stars" placeholder="1 to 5 stars" type="stars" onChange={handleChange}>
+              <option value="1">1 star</option>
+              <option value="2">2 stars</option>
+              <option value="3">3 stars</option>
+              <option value="4">4 stars</option>
+              <option value="5">5 stars</option>
+		      </select>
         </div>
-        <div className="flex-row space-between my-2">
           <label htmlFor="comments"><strong>Comments:(optional)</strong></label>
-          <input
+          <textarea
             placeholder="Comments"
             name="comments"
             type="comments"
             id="comments"
             onChange={handleChange}
           />
-        </div>
         <div className="flex-row flex-end">
           <button type="submit"><strong>Submit</strong></button>
         </div>
