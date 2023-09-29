@@ -47,7 +47,7 @@ function ProductItem(item) {
     <div className="card px-1 py-1">
       <Link to={`/products/${_id}`}>
         <img alt={name} src={`${image}`} />
-        <p>{name}</p>
+        <div><p style={{ fontSize: "20px", fontWeight: "bold" }}>{name}</p></div>
       </Link>
       <div>
         <div>

@@ -40,7 +40,7 @@
     background-color: var(--secondary);
     border-radius: 50%;
     padding: 0.25rem;
-    width: 70px;
+    width: 60px;
     height: 60px;
   }
   
@@ -73,3 +73,4 @@
       margin: 0 auto;
     }
   }
+
