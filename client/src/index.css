@@ -201,30 +201,40 @@ input:focus {
   max-width: 75%;
 }
 .detail-form-container {
-  /* background-color: yellow; */
   background-image: url("./assets/VerificationBackground.jpeg");
   background-position: top center;
-  background-size: cover;
+  /* background-size: cover; */
   background-repeat: no-repeat;
   width: 50%;
-  min-height: 100vh;
+  height: 50%;
+  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
-  margin: 50px;
-  padding: 30px 30px 100px 30px;
+  margin: 130px 100px 50px 50px;
+  padding: 30px 30px 30px 30px;
+  justify-content: center;
 }
 .detail-form-container form {
   background-color: white;
   width: 75%;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  margin: 50px;
+  justify-content: left;
+  margin: 50px 50px 50px 70px;
   padding: 30px;
-  opacity: 0.7;
+  opacity: 0.75;
+  font-size: 17px;
 }
 .detail-form-container h3 {
   font-weight: 700;
+  margin: 10px 10px 10px 0;
+}
+.detail-form-container textarea {
+  height: 200px;
+  margin: 10px 10px 10px 0;
+}
+.detail-form-container select {
+  margin: 0px 0px 10px 10px;
 }
 
 .flex-row {
