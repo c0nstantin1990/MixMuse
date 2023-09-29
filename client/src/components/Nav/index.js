@@ -41,15 +41,15 @@ function Nav() {
     <header style={{ background: "var(--primary)" }} className="flex-row px-1 justify-content-center">
       <div style={{textAlign: 'center'}}> 
       <h1>
+      <img
+        src={logo}
+        alt="Logo"
+        style={{ width: "45px" }}/>
         <Link to="/" style={{ color: "var(--light)" }}>
           <span role="img" aria-label="shopping bag">
           </span>
-          MixMuse 
+          MixMuse
         </Link>
-        <img
-        src={logo}
-        alt="Logo"
-        style={{ width: "75px" }}/>
       </h1>
 
       <nav>{showNavigation()}</nav>

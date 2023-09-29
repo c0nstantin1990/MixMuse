@@ -2,7 +2,7 @@
 
 :root {
   --primary: #000000;
-  --secondary: #d3bd14;
+  --secondary: #cfcaa4;
   --tertiary: #000000;
   --light: #e4d1d1;
   --dark: #272f32;
@@ -116,6 +116,7 @@ a:hover {
 
 header {
   background: var(--primary);
+  font-family:Georgia, 'Times New Roman', Times, serif;
 }
 
 header a {
@@ -305,6 +306,7 @@ input:focus {
   border: 1 px solid rgba(255, 255, 255, 0.3);
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  
 }
 
 .card h2 {
