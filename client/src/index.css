@@ -21,6 +21,9 @@ body {
 }
 
 body {
+  background-image: url("./assets/LoginBackground.jpeg");
+  background-size: cover;
+  background-attachment: fixed;
   margin: 0;
   padding: 0;
   font-family: "roboto";
@@ -116,7 +119,7 @@ a:hover {
 
 header {
   background: var(--primary);
-  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 header a {
@@ -183,6 +186,7 @@ input:focus {
 }
 
 .page-container {
+  background-color: #f5f9f7;
   min-height: 100vh;
   display: flex;
   flex-direction: row;
@@ -200,6 +204,7 @@ input:focus {
   height: auto;
   max-width: 75%;
 }
+
 .detail-form-container {
   background-image: url("./assets/VerificationBackground.jpeg");
   background-position: top center;
@@ -263,14 +268,14 @@ input:focus {
   margin-left: var(--spacing-two);
 }
 
-.my-1 {
+/* .my-1 {
   margin-top: 0;
   margin-bottom: 0;
   background-image: url("./assets/LoginBackground.jpeg");
   background-size: cover;
   background-attachment: fixed;
   height: 100vh;
-}
+} */
 
 .my-1 img {
   width: 400px;
@@ -290,6 +295,7 @@ input:focus {
 .px-1 img {
   width: 200px;
   height: auto;
+  box-shadow: 0 0 10px 2px #d25050;
 }
 
 .px-2 {
@@ -308,15 +314,13 @@ input:focus {
 }
 
 .card {
-  width: 25%;
+  margin: 1px;
+  border-color: #000000;
+  width: 19%;
   text-align: center;
-  background-color: #f9f9f9 (0, 0, 0, 0.5); /* Adjust the alpha value (0.5 for 50% transparency) */
-  border-radius: 10px;
-  padding: 20px;
-  border: 1 px solid rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.2);
+  background-color: #ccc;
+  background: rgba(239, 172, 172, 0.9);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  
 }
 
 .card h2 {

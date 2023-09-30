@@ -7,26 +7,33 @@ import { idbPromise } from "../utils/helpers";
 function Success() {
   const [addOrder] = useMutation(ADD_ORDER);
 
-  useEffect(() => {
-    async function saveOrder() {
-      const cart = await idbPromise("cart", "get");
-      const products = cart.map((item) => item._id);
+  const saveOrder = async () => {
+    const cart = await idbPromise("cart", "get");
+    const products = cart.map((item) => item._id);
 
-      if (products.length) {
-        const { data } = await addOrder({ variables: { products } });
-        const productData = data.addOrder.products;
+    if (products.length) {
+      const { data } = await addOrder({ variables: { products } });
+      const productData = data.addOrder.products;
 
-        productData.forEach((item) => {
-          idbPromise("cart", "delete", item);
-        });
-      }
-
-      setTimeout(() => {
-        window.location.assign("/");
-      }, 3000);
+      productData.forEach((item) => {
+        idbPromise("cart", "delete", item);
+      });
     }
+  };
 
+  const handleLogout = () => {
+    setTimeout(() => {
+      console.log("User logged out");
+    }, 1000);
+  };
+
+  useEffect(() => {
     saveOrder();
+    const logoutTimer = setTimeout(() => {
+      handleLogout();
+    }, 3000);
+
+    return () => clearTimeout(logoutTimer);
   }, [addOrder]);
 
   return (
