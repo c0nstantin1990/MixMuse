@@ -2,15 +2,20 @@ import React, { useState, useEffect } from "react";
 import Star from "../Star";
 
 const StarRating = ({ value }) => {
-  const [rating, setRating] = React.useState(parseInt(value) || 0);
-  const [selection, setSelection] = React.useState(0);
+  const [rating, setRating] = useState(parseInt(value) || 0);
+  const [selection, setSelection] = useState(0);
 
-  const hoverOver = event => {
+  useEffect(() => {
+    setRating(parseInt(value) || 0);
+  }, [value]);
+
+  const hoverOver = (event) => {
     let val = 0;
-    if (event && event.target && event.target.getAttribute('data-star-id'))
-      val = event.target.getAttribute('data-star-id');
+    if (event && event.target && event.target.getAttribute("data-star-id"))
+      val = event.target.getAttribute("data-star-id");
     setSelection(val);
   };
+
   return (
     <div>
       {Array.from({ length: 5 }, (v, i) => (
