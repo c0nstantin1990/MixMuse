@@ -31,6 +31,7 @@ function Success() {
     saveOrder();
     const logoutTimer = setTimeout(() => {
       handleLogout();
+      window.location.assign("/");
     }, 3000);
 
     return () => clearTimeout(logoutTimer);
@@ -39,9 +40,9 @@ function Success() {
   return (
     <div>
       <Jumbotron>
-        <h1>Success!</h1>
-        <h2>Thank you for your purchase!</h2>
-        <h2>You will now be redirected to the home page</h2>
+        <h1 style={{ color: "white" }}>Success!</h1>
+        <h2 style={{ color: "white" }}>Thank you for your purchase!</h2>
+        <h2 style={{ color: "white" }}>You will now be redirected to the home page</h2>
       </Jumbotron>
     </div>
   );

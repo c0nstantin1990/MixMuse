@@ -6,8 +6,7 @@ import Cart from "../components/Cart";
 import { useMutation } from "@apollo/client";
 import Auth from "../utils/auth";
 import { ADD_RATING } from "../utils/mutations";
-import  StarRating  from "../components/StarRating";
-
+import StarRating from "../components/StarRating";
 import {
   REMOVE_FROM_CART,
   UPDATE_CART_QUANTITY,
@@ -23,22 +22,25 @@ function Detail() {
     return state;
   });
   const dispatch = useDispatch();
-  const [formState, setFormState] = useState({ productId: "", stars: "", comments: "" });
+  const [formState, setFormState] = useState({
+    productId: "",
+    stars: "",
+    comments: "",
+    average: "",
+  });
   const [addRating] = useMutation(ADD_RATING);
 
   const { id } = useParams();
-  const [currentProduct, setCurrentProduct] = useState({});
+  let [currentProduct, setCurrentProduct] = useState({});
   const { loading, data } = useQuery(QUERY_PRODUCTS);
   const { products, cart } = state;
-  let average = 0;
-
+  let updatedProduct = currentProduct;
+console.log("hello donna", updatedProduct);
   useEffect(() => {
-    // already in global store
     if (products.length) {
       setCurrentProduct(products.find((product) => product._id === id));
-    }
-    // retrieved from server
-    else if (data) {
+      updatedProduct = currentProduct;
+    } else if (data) {
       dispatch({
         type: UPDATE_PRODUCTS,
         products: data.products,
@@ -47,15 +49,17 @@ function Detail() {
       data.products.forEach((product) => {
         idbPromise("products", "put", product);
       });
-    }
-    // get cache from idb
-    else if (!loading) {
+      updatedProduct = currentProduct;
+
+    } else if (!loading) {
       idbPromise("products", "get").then((indexedProducts) => {
         dispatch({
           type: UPDATE_PRODUCTS,
           products: indexedProducts,
         });
       });
+      updatedProduct = currentProduct;
+
     }
   }, [products, data, loading, dispatch, id]);
 
@@ -76,7 +80,10 @@ function Detail() {
         type: ADD_TO_CART,
         product: { ...currentProduct, purchaseQuantity: 1 },
       });
-      idbPromise("cart", "put", { ...currentProduct, purchaseQuantity: 1 });
+      idbPromise("cart", "put", {
+        ...currentProduct,
+        purchaseQuantity: 1,
+      });
     }
   };
 
@@ -91,16 +98,47 @@ function Detail() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log("submitted id: ", id);
-    console.log("formState.stars: ", formState.stars);
-    console.log("formState.comments: ", formState.comments);
-    const mutationResponse = await addRating({
-      variables: {
-        productId: id,
-        stars: Number(formState.stars),
-        comments: formState.comments,
-      },
-    });
+
+    const { stars, comments } = formState;
+
+    try {
+      const mutationResponse = await addRating({
+        variables: {
+          productId: id,
+          stars: Number(stars),
+          comments,
+        },
+      });
+
+      if (mutationResponse.data.addRating) {
+        updatedProduct = { ...currentProduct };
+        updatedProduct.ratings.push({
+          stars: Number(stars),
+          comments,
+        });
+        const totalStars = updatedProduct.ratings.reduce(
+          (acc, rating) => acc + rating.stars,
+          0
+        );
+        updatedProduct.averageRating =
+          totalStars / updatedProduct.ratings.length;
+
+        setCurrentProduct(updatedProduct);
+      }
+      console.log("updatedProduct average", updatedProduct.averageRating);
+      console.log("currentProduct", currentProduct);
+
+      setFormState({
+        stars: "",
+        comments: ""
+      })
+      window.location.reload(false);
+      document.getElementById("rating-form").reset();
+      document.getElementById("rating-msg").textContent = 'Review submitted. Thank you!';
+
+      } catch (error) {
+      console.error("Error adding rating:", error);
+    }
   };
 
   const handleChange = (event) => {
@@ -114,62 +152,82 @@ function Detail() {
   return (
     <>
       {currentProduct && cart ? (
-      <div className="page-container">
-        <div className="detail-container">
-          <Link to="/">← Back to Products</Link>
+        <div className="page-container">
+          <div className="detail-container">
+            <Link to="/">← Back to Products</Link>
 
-          <h2>{currentProduct.name}</h2>
+            <h2>{currentProduct.name}</h2>
 
-          <p>{currentProduct.description}</p>
+            <p>{currentProduct.description}</p>
 
-          <p>
-            <strong>Price:</strong>${currentProduct.price}{" "}
-            <button onClick={addToCart}>Add to Cart</button>
-            <button
-              disabled={!cart.find((p) => p._id === currentProduct._id)}
-              onClick={removeFromCart}
-            >
-              Remove from Cart
-            </button>
-          </p>
-          <img
-                src={`${currentProduct.image}`}
-                alt={currentProduct.name}
-              />
-          <div>
-            { (currentProduct.ratings)
-                ? <div> <StarRating value={ currentProduct.ratings.reduce((acc, current) => acc + Number.parseInt(current.stars), 0) / currentProduct.ratings.length} />{currentProduct.ratings.length} rating(s) </div> 
-                : <div> Not rated yet </div> 
-            }
+            <p>
+              <strong>Price:</strong>${currentProduct.price}{" "}
+              <button onClick={addToCart}>Add to Cart</button>
+              <button
+                disabled={!cart.find((p) => p._id === currentProduct._id)}
+                onClick={removeFromCart}
+              >
+                Remove from Cart
+              </button>
+            </p>
+            <img src={`${currentProduct.image}`} alt={currentProduct.name} />
+            <div>
+              {updatedProduct.ratings ? (
+                <div>
+                  {" "}
+                  <StarRating
+                    value={
+                      updatedProduct.ratings.reduce(
+                        (acc, current) => acc + Number.parseInt(current.stars),
+                        0
+                      ) / updatedProduct.ratings.length
+                    }
+                  />
+                  {updatedProduct.ratings.length} rating(s){" "}
+                </div>
+              ) : (
+                <div> Not rated yet </div>
+              )}
+            </div>
           </div>
-
-        </div>
           <div className="detail-form-container">
-      <form onSubmit={handleFormSubmit}>
-        <h3>Rate this product</h3>
-        <div className="flex-row left-justify my-2">
-          <label htmlFor="stars"><strong>Number of Stars:</strong></label>
-          <select name="stars" id="stars" placeholder="1 to 5 stars" type="stars" onChange={handleChange}>
-              <option value="1">1 star</option>
-              <option value="2">2 stars</option>
-              <option value="3">3 stars</option>
-              <option value="4">4 stars</option>
-              <option value="5">5 stars</option>
-		      </select>
-        </div>
-          <label htmlFor="comments"><strong>Comments:(optional)</strong></label>
-          <textarea
-            placeholder="Comments"
-            name="comments"
-            type="comments"
-            id="comments"
-            onChange={handleChange}
-          />
-        <div className="flex-row flex-end">
-          <button type="submit"><strong>Submit</strong></button>
-        </div>
-      </form>
-
+            <form onSubmit={handleFormSubmit} id="rating-form">
+              <h3>Rate this product</h3>
+              <div className="flex-row left-justify my-2">
+                <label htmlFor="stars">
+                  <strong>Number of Stars:</strong>
+                </label>
+                <select
+                  name="stars"
+                  id="stars"
+                  placeholder="1 to 5 stars"
+                  type="stars"
+                  onChange={handleChange}
+                >
+                  <option value="1">1 star</option>
+                  <option value="2">2 stars</option>
+                  <option value="3">3 stars</option>
+                  <option value="4">4 stars</option>
+                  <option value="5">5 stars</option>
+                </select>
+              </div>
+              <label htmlFor="comments">
+                <strong>Comments:(optional)</strong>
+              </label>
+              <textarea
+                placeholder="Comments"
+                name="comments"
+                type="comments"
+                id="comments"
+                onChange={handleChange}
+              />
+              <div className="flex-row flex-end">
+                <button type="submit">
+                  <strong>Submit</strong>
+                </button>
+              </div>
+              <h5 id="rating-msg"></h5>
+            </form>
           </div>
         </div>
       ) : null}
