@@ -98,46 +98,46 @@ function Detail() {
     if (!Auth.loggedIn()) {
       document.getElementById("rating-msg").textContent =
         "Please login to submit review";
-} 
-else {
-    const { stars, comments } = formState;
+    } 
+    else {
+      const { stars, comments } = formState;
 
-    try {
-      const mutationResponse = await addRating({
-        variables: {
-          productId: id,
-          stars: Number(stars),
-          comments,
-        },
-      });
-
-      if (mutationResponse.data.addRating) {
-        updatedProduct = { ...currentProduct };
-        updatedProduct.ratings.push({
-          stars: Number(stars),
-          comments,
+      try {
+        const mutationResponse = await addRating({
+          variables: {
+            productId: id,
+            stars: Number(stars),
+            comments,
+          },
         });
-        const totalStars = updatedProduct.ratings.reduce(
-          (acc, rating) => acc + rating.stars,
-          0
-        );
-        updatedProduct.averageRating =
-          totalStars / updatedProduct.ratings.length;
 
-        setCurrentProduct(updatedProduct);
+        if (mutationResponse.data.addRating) {
+          updatedProduct = { ...currentProduct };
+          updatedProduct.ratings.push({
+            stars: Number(stars),
+            comments,
+          });
+          const totalStars = updatedProduct.ratings.reduce(
+            (acc, rating) => acc + rating.stars,
+            0
+          );
+          updatedProduct.averageRating =
+            totalStars / updatedProduct.ratings.length;
+
+          setCurrentProduct(updatedProduct);
+        }
+        setFormState({
+          stars: "",
+          comments: "",
+        });
+        document.getElementById("rating-form").reset();
+        document.getElementById("rating-msg").textContent =
+          "Review submitted. Thank you!";
+
+      } catch (error) {
+        console.error("Error adding rating:", error);
       }
-      setFormState({
-        stars: "",
-        comments: "",
-      });
-      document.getElementById("rating-form").reset();
-      document.getElementById("rating-msg").textContent =
-        "Review submitted. Thank you!";
-
-    } catch (error) {
-      console.error("Error adding rating:", error);
     }
-  }
   };
 
   const handleChange = (event) => {
