@@ -69,7 +69,7 @@ function FeaturedProducts() {
                 creation
               </p>
               <a href="/categoryMenu" className="btn btn-outline-light">
-                Feataured Mixers
+                Featured Mixers
               </a>
             </div>
           </div>

@@ -22,28 +22,27 @@ function Nav() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <ul className="flex-row">
+        <ul className="flex-column">
           <li className="mx-1">
             <CategoryMenu />
-            <Link to="/orderHistory">Order History</Link>
           </li>
           <li className="mx-1">
-            <Link to="/" onClick={handleLogout}>
-              Logout
-            </Link>
+              <Link to="/orderHistory" className="mx-2">Order History</Link>
+              <Link to="/" onClick={handleLogout} className="mx-2">
+                Logout
+              </Link>
           </li>
         </ul>
       );
     } else {
       return (
-        <ul className="flex-row2">
-          <CategoryMenu />
-
+        <ul className="flex-column">
           <li className="mx-1">
-            <Link to="/signup">Signup</Link>
+            <CategoryMenu />
           </li>
           <li className="mx-1">
-            <Link to="/login">Login</Link>
+            <Link to="/signup" className="mx-2">Signup</Link>
+            <Link to="/login" className="mx-2">Login</Link>
           </li>
         </ul>
       );
