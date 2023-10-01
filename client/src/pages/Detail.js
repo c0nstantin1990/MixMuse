@@ -35,7 +35,6 @@ function Detail() {
   const { loading, data } = useQuery(QUERY_PRODUCTS);
   const { products, cart } = state;
   let updatedProduct = currentProduct;
-console.log("hello donna", updatedProduct);
   useEffect(() => {
     if (products.length) {
       setCurrentProduct(products.find((product) => product._id === id));
@@ -50,7 +49,6 @@ console.log("hello donna", updatedProduct);
         idbPromise("products", "put", product);
       });
       updatedProduct = currentProduct;
-
     } else if (!loading) {
       idbPromise("products", "get").then((indexedProducts) => {
         dispatch({
@@ -59,7 +57,6 @@ console.log("hello donna", updatedProduct);
         });
       });
       updatedProduct = currentProduct;
-
     }
   }, [products, data, loading, dispatch, id]);
 
@@ -125,18 +122,14 @@ console.log("hello donna", updatedProduct);
 
         setCurrentProduct(updatedProduct);
       }
-      console.log("updatedProduct average", updatedProduct.averageRating);
-      console.log("currentProduct", currentProduct);
-
       setFormState({
         stars: "",
-        comments: ""
-      })
-      window.location.reload(false);
+        comments: "",
+      });
       document.getElementById("rating-form").reset();
-      document.getElementById("rating-msg").textContent = 'Review submitted. Thank you!';
-
-      } catch (error) {
+      document.getElementById("rating-msg").textContent =
+        "Review submitted. Thank you!";
+    } catch (error) {
       console.error("Error adding rating:", error);
     }
   };
