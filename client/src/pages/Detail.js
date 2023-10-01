@@ -95,7 +95,11 @@ function Detail() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+    if (!Auth.loggedIn()) {
+      document.getElementById("rating-msg").textContent =
+        "Please login to submit review";
+} 
+else {
     const { stars, comments } = formState;
 
     try {
@@ -129,9 +133,11 @@ function Detail() {
       document.getElementById("rating-form").reset();
       document.getElementById("rating-msg").textContent =
         "Review submitted. Thank you!";
+
     } catch (error) {
       console.error("Error adding rating:", error);
     }
+  }
   };
 
   const handleChange = (event) => {
