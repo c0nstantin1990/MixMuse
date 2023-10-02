@@ -4,7 +4,7 @@
   --primary: #000000;
   --secondary: #cfcaa4;
   --tertiary: #000000;
-  --light: #e4d1d1;
+  --light: #ede0e0;
   --dark: #272f32;
   --error: rgb(228, 46, 1);
   --spacing-one: calc(1rem * 0.5);
@@ -150,6 +150,18 @@ button[disabled] {
   color: rgb(246, 243, 243);
   background-color: var(--primary);
   font-weight: bold;
+}
+
+.submit-button {
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 0.25rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin: 0 1px;
+  background-color: white;
 }
 
 img {
@@ -376,7 +388,7 @@ footer h2 {
 }
 .carousel-item {
   height: 35rem;
-  background-color: rgb(10, 10, 10);
+  /* background-color: rgb(10, 10, 10); */
   color: white;
   position: relative;
   background-size: cover;
@@ -392,7 +404,7 @@ footer h2 {
   left: 0px;
   right: 0px;
   top: 0;
-  opacity: 0.3;
+  opacity: 1;
   background-size: cover;
   background-position: center;
 }
