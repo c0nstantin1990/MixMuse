@@ -24,13 +24,13 @@ function FeaturedProducts() {
               className=" container main-page-container test1 "
               style={{ marginTop: "60px" }}
             >
-             <div className="test1">
+              {/* <div className="test1">
               <h1 className="fw-bold" >Check Out Our Featured Liquor</h1>
               <p className="fs-3">
                 Click below to search featured spirits for your next cocktail
                 creation
               </p>
-              </div>
+              </div> */}
               {/* <a href="/categoryMenu" className="btn btn-outline-light">
                 Featured Liquor
               </a> */}
@@ -47,12 +47,12 @@ function FeaturedProducts() {
               className="container main-page-container "
               style={{ marginTop: "60px" }}
             >
-              <h1 className="fw-bold">Check Out Our Featured Equipment</h1>
+              {/* <h1 className="fw-bold">Check Out Our Featured Equipment</h1>
               <p className="fs-3">
                 Click below to search featured equipment and build your dream
                 bar today
               </p>
-              {/* <a href="/categoryMenu" className="btn btn-outline-light">
+              <a href="/categoryMenu" className="btn btn-outline-light">
                 Featured Equipment
               </a> */}
             </div>
@@ -68,13 +68,12 @@ function FeaturedProducts() {
               className="container main-page-container"
               style={{ marginTop: "60px" }}
             >
-              
-              <h1 className="fw-bold">Check Out Our Featured Mixers</h1>
+              {/* <h1 className="fw-bold">Check Out Our Featured Mixers</h1>
               <p className="fs-3">
                 Click below to search featured mixers for your next cocktail
                 creation
               </p>
-              {/* <a href="/categoryMenu" className="btn btn-outline-light">
+              <a href="/categoryMenu" className="btn btn-outline-light">
                 Featured Mixers
               </a> */}
             </div>
@@ -90,12 +89,12 @@ function FeaturedProducts() {
               className="container main-page-container"
               style={{ marginTop: "60px" }}
             >
-              <h1 className="fw-bold overlay">Rate and Review Products Here</h1>
+              {/* <h1 className="fw-bold overlay">Rate and Review Products Here</h1>
               <p className="fs-3 overlay">
                 Leave your thoughts on products and share your insight with
                 other bartenders
               </p>
-              {/* <a href="/categoryMenu" className="btn btn-outline-light">
+              <a href="/categoryMenu" className="btn btn-outline-light">
                 Leave your thoughts!
               </a> */}
             </div>
