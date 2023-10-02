@@ -95,12 +95,17 @@ function Detail() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    const { stars, comments } = formState;
+console.log("stars =", stars);
     if (!Auth.loggedIn()) {
       document.getElementById("rating-msg").textContent =
         "Please login to submit review";
-    } else {
-      const { stars, comments } = formState;
-
+    } 
+    else if (stars === '') {
+      document.getElementById("rating-msg").textContent =
+        "Please select Number of Stars to submit review";
+    } 
+    else {
       try {
         const mutationResponse = await addRating({
           variables: {
@@ -215,6 +220,7 @@ function Detail() {
                   type="stars"
                   onChange={handleChange}
                 >
+                  <option value="0">-Select-</option>
                   <option value="1">1 star</option>
                   <option value="2">2 stars</option>
                   <option value="3">3 stars</option>
