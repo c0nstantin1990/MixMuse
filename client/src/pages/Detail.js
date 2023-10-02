@@ -98,8 +98,7 @@ function Detail() {
     if (!Auth.loggedIn()) {
       document.getElementById("rating-msg").textContent =
         "Please login to submit review";
-    } 
-    else {
+    } else {
       const { stars, comments } = formState;
 
       try {
@@ -133,7 +132,6 @@ function Detail() {
         document.getElementById("rating-form").reset();
         document.getElementById("rating-msg").textContent =
           "Review submitted. Thank you!";
-
       } catch (error) {
         console.error("Error adding rating:", error);
       }
@@ -171,6 +169,7 @@ function Detail() {
             </p>
             <img src={`${currentProduct.image}`} alt={currentProduct.name} />
             <div>
+              <p></p>
               {updatedProduct.ratings ? (
                 <div>
                   {" "}
@@ -182,7 +181,20 @@ function Detail() {
                       ) / updatedProduct.ratings.length
                     }
                   />
-                  {updatedProduct.ratings.length} rating(s){" "}
+                  <p>{updatedProduct.ratings.length} rating(s)</p>
+                  <div className="container-lastrating">
+                    {updatedProduct.ratings.map((rating, index) => (
+                      <div className="lastcomment" key={index}>
+                        <p>
+                          {" "}
+                          <span role="img" aria-label="star">
+                            {"⭐".repeat(rating.stars)}
+                          </span>
+                        </p>
+                        <p>{rating.comments}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ) : (
                 <div> Not rated yet </div>

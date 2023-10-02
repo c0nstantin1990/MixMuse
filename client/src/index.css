@@ -401,6 +401,23 @@ footer h2 {
   padding-bottom: 200px;
   text-align: center;
 }
+
+.lastcomment {
+  margin-top: 10px;
+  padding-top: 20px;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.container-lastrating {
+  margin-top: 40px;
+}
+
+.lastcomment {
+  margin-bottom: 20px;
+}
+
 @media screen and (max-width: 768px) {
   .card {
     width: 100%;
