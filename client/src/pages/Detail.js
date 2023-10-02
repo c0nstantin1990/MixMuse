@@ -96,7 +96,7 @@ function Detail() {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     const { stars, comments } = formState;
-console.log("stars =", stars);
+
     if (!Auth.loggedIn()) {
       document.getElementById("rating-msg").textContent =
         "Please login to submit review";
@@ -154,7 +154,7 @@ console.log("stars =", stars);
   return (
     <>
       {currentProduct && cart ? (
-        <div className="page-container">
+        <div className="page-container flex-row">
           <div className="detail-container">
             <Link to="/">← Back to Products</Link>
 
