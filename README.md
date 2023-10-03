@@ -54,7 +54,7 @@ MixMuse is a scalable, user-focused MERN app that offers a wide range of bartend
 
 **Main Product Page:**  
 
-![Main Product Page](/client/src/assets/images/mainProductPage.jpeg)
+![Main Product Page](/client/src/assets/images/mainProductPage.png)
 
 <br />
 
